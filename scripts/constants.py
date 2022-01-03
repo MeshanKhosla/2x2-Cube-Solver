@@ -1,5 +1,4 @@
 """
-
 Cube stickers                           Array subscripts
 
     W   W                                   00  01

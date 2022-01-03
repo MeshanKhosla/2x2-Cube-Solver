@@ -30,7 +30,7 @@ def convert_states_path_to_moves(path_in_states):
 
 def main():
 	print('\nLoading graph...')
-	g = Graph.Read_Pickle('graph-igraph.pickle')
+	g = Graph.Read_Pickle('graph-data/graph-igraph.pickle')
 	print('Graph loaded\n')
 
 	SOLVED = 'WWWWGGRRBBOOGGRRBBOOYYYY'
@@ -51,6 +51,14 @@ def main():
 	path_in_states = list(map(lambda idx: g.vs[idx]['name'], path_in_idx))
 	path_in_moves = convert_states_path_to_moves(path_in_states)
 	print('Rotate to', start)
+	# Replace two consecutive chars with _2
+	
 	print(' -> '.join(path_in_moves))
 
 main()
+
+"""
+Files needed for this to work:
+- graph-igraph.pickle
+- 2x2states.pickle
+"""

@@ -26,7 +26,7 @@ def rotate_cube_to_match(state):
 	Y = U + D' (Entire cube on U)
 	Z = F + B' (Entire cube on F)
 	"""
-	with open('2x2states.pickle', 'rb') as f:
+	with open('graph-data/2x2states.pickle', 'rb') as f:
 		states = pickle.load(f)
 	def check_horizontal(state):
 		for _ in range(4):
@@ -84,7 +84,7 @@ def save_graph_to_file():
 	the graph for 2x2 states in graph.json and graph.pickle
 	"""
 	graph = {}
-	with open('2x2states.txt') as f:
+	with open('graph-data/2x2states.txt') as f:
 		i = 0
 		for state in f:
 			print(i)
@@ -92,10 +92,10 @@ def save_graph_to_file():
 			graph[state] = generate_one_move_possibilities(state)
 			i += 1
 
-	with open('graph.pickle', 'wb') as f:
+	with open('graph-data/graph.pickle', 'wb') as f:
 		pickle.dump(graph, f, protocol=pickle.HIGHEST_PROTOCOL)
 	
-	with open('graph.json', 'w') as f:
+	with open('graph-data/graph.json', 'w') as f:
 		json.dump(graph, f)
 
 def save_states_to_file():
@@ -103,7 +103,7 @@ def save_states_to_file():
 	Serializes a set of all possible 2x2 combinations into 2x2states.pickle
 	"""
 	states = set()
-	with open('2x2states.txt') as f:
+	with open('graph-data/2x2states.txt') as f:
 		i = 0
 		for state in f:
 			state = state.rstrip('\n')
@@ -112,7 +112,7 @@ def save_states_to_file():
 			i += 1
 
 	
-	with open('2x2states.pickle', 'wb') as f:
+	with open('graph-data/2x2states.pickle', 'wb') as f:
 		pickle.dump(states, f, protocol=pickle.HIGHEST_PROTOCOL)
 
 k = 0
@@ -129,7 +129,7 @@ def save_pickled_igraph():
 		print('Edge', k)
 		return n
 
-	with open('graph.pickle', 'rb') as f:
+	with open('graph-data/graph.pickle', 'rb') as f:
 		graph = pickle.load(f)
 
 	g = Graph()
@@ -138,18 +138,18 @@ def save_pickled_igraph():
 		g.add_vertex(node)
 		i += 1
 		print("Node", i)
-	g.write_pickle('vertices-igraph.pickle')
+	g.write_pickle('graph-data/vertices-igraph.pickle')
 	print('DONE ADDING NODES')
 	
 	all_edges=[(identity(node), edge) for node, edges in graph.items() for edge in edges]
 	print("Num edges", len(all_edges))
 
 	# Serializes list of tuples representing each edge
-	with open('all-edges.pickle', 'wb') as edges_file:
+	with open('graph-data/all-edges.pickle', 'wb') as edges_file:
 		pickle.dump(all_edges, edges_file, protocol=pickle.HIGHEST_PROTOCOL)
 	print("DONE SERIALIZING EDGES")
 
 	g.add_edges(all_edges)
 	print('DONE ADDING EDGES')
-	g.write_pickle('graph-igraph.pickle')
+	g.write_pickle('graph-data/graph-igraph.pickle')
 	
