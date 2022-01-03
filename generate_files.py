@@ -19,8 +19,8 @@ def rotate_cube_to_match(state):
 	"""
 	Performs rotation operations (max 24) on a cubestate until it matches one of the
 	combinations in the states set
-	:param state: The state that needs to be rotated
-	:return: The rotated state that is in the set (still same permutation)
+	@param state The state that needs to be rotated
+	@return The rotated state that is in the set (still same permutation)
 	
 	X = R + L' (Entire cube on R)
 	Y = U + D' (Entire cube on U)
