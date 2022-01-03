@@ -28,6 +28,32 @@ def convert_states_path_to_moves(path_in_states):
 				break	
 	return path_in_moves
 
+def half_turn_metric(path_in_moves):
+	"""
+	Converts a solution to the cube with consecutive letters into half turns
+	>>> ["R", "R", "U", "F'", "F'"]
+	["R2", "U", "F2"]
+	>>> ["R", "R", "U", "F'", "F'", 'L']
+	["R2", "U", "F2", "L"]
+	"""
+	half_turn_result = []
+	skip = False
+	for i in range(len(path_in_moves)):
+		if (i == len(path_in_moves) - 1) and not skip:
+			half_turn_result.append(path_in_moves[i])
+			break
+		if skip:
+			skip = False
+			continue
+		cur_move = path_in_moves[i]
+		next_move = path_in_moves[i + 1]
+		new_move = cur_move
+		if cur_move == next_move:
+			new_move = cur_move[0] + "2"
+			skip = True
+		half_turn_result.append(new_move)
+	return half_turn_result
+
 def main():
 	print('\nLoading graph...')
 	g = Graph.Read_Pickle('graph-data/graph-igraph.pickle')
@@ -49,10 +75,9 @@ def main():
 	print('\nGenerating solution...\n')
 	path_in_idx = g.get_shortest_paths(start, SOLVED)[0]
 	path_in_states = list(map(lambda idx: g.vs[idx]['name'], path_in_idx))
-	path_in_moves = convert_states_path_to_moves(path_in_states)
-	print('Rotate to', start)
+	path_in_moves = half_turn_metric(convert_states_path_to_moves(path_in_states))
 	# Replace two consecutive chars with _2
-	
+	print('Rotate to', start)
 	print(' -> '.join(path_in_moves))
 
 main()
