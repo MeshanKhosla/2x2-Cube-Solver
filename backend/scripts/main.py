@@ -1,6 +1,6 @@
 from igraph import *
-from constants import all_moves, abrv_to_move
-from generate_files import rotate_cube_to_match, apply_move
+from scripts.constants import all_moves, abrv_to_move
+from scripts.generate_files import rotate_cube_to_match, apply_move
 
 def get_abrv_from_move(starting_move):
 	"""
@@ -54,14 +54,15 @@ def half_turn_metric(path_in_moves):
 		half_turn_result.append(new_move)
 	return half_turn_result
 
-def main():
+def generate_solution(start=None):
 	print('\nLoading graph...')
-	g = Graph.Read_Pickle('graph-data/graph-igraph.pickle')
+	g = Graph.Read_Pickle('scripts/graph-data/graph-igraph.pickle')
 	print('Graph loaded\n')
 
 	SOLVED = 'WWWWGGRRBBOOGGRRBBOOYYYY'
 
-	start = input('Enter your cube state: ').upper()
+	if not start:
+		start = input('Enter your cube state: ').upper()
 
 	invalid_input = False
 	try:
@@ -70,17 +71,17 @@ def main():
 		invalid_input = True
 	if not start or invalid_input:
 		print('\nInvalid cube state, please try again')
-		return
+		return { 'status': 'Invalid Cube State' }
 
 	print('\nGenerating solution...\n')
 	path_in_idx = g.get_shortest_paths(start, SOLVED)[0]
 	path_in_states = list(map(lambda idx: g.vs[idx]['name'], path_in_idx))
 	path_in_moves = half_turn_metric(convert_states_path_to_moves(path_in_states))
-	# Replace two consecutive chars with _2
 	print('Rotate to', start)
 	print(' -> '.join(path_in_moves))
+	return { 'status': 'Good', 'rotate_to': start, 'solution': path_in_moves}
 
-main()
+# generate_solution()
 
 """
 Files needed for this to work:
