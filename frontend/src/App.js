@@ -1,22 +1,28 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
+import EnterScramble from './components/EnterScramble'
 
 export const App = () => {
+	const [isGraphLoaded, setIsGraphLoaded] = useState(false)
 
-	const [data, setData] = useState({})
-
-	const initialState = "WBOWGYGRBRYOOGWYGOBBRRYW"
+	/* Load the 2x2 cube graph when the app is loaded */
 	useEffect(() => {
-		fetch("/get-solution", { headers: { 'initial_state': initialState }}).then(
+		fetch('/setup-graph').then(
 			res => res.json()
-		).then(jsonData => {
-			setData(jsonData)
-			console.log(jsonData)
+		).then(graphData => {
+			console.log(graphData)
+			if (graphData['status'] === 200) {
+				setIsGraphLoaded(true);
+			}
 		})
 	}, [])
 
 	return (
 		<div>
-		hey
+			{isGraphLoaded ? (
+				<EnterScramble />
+			) : 
+				<p>Loading Graph...</p>
+			}
 		</div>
 	)
 }

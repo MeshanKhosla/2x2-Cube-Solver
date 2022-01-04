@@ -54,16 +54,22 @@ def half_turn_metric(path_in_moves):
 		half_turn_result.append(new_move)
 	return half_turn_result
 
-def generate_solution(start=None):
+def load_graph():
 	print('\nLoading graph...')
 	g = Graph.Read_Pickle('scripts/graph-data/graph-igraph.pickle')
 	print('Graph loaded\n')
+	return g
+
+def generate_solution(graph=None, start=None):
+	if not graph:
+		graph = load_graph()
 
 	SOLVED = 'WWWWGGRRBBOOGGRRBBOOYYYY'
 
 	if not start:
-		start = input('Enter your cube state: ').upper()
+		start = input('Enter your cube state: ')
 
+	start = start.upper()
 	invalid_input = False
 	try:
 		start = rotate_cube_to_match(start)
@@ -74,12 +80,16 @@ def generate_solution(start=None):
 		return { 'status': 'Invalid Cube State' }
 
 	print('\nGenerating solution...\n')
-	path_in_idx = g.get_shortest_paths(start, SOLVED)[0]
-	path_in_states = list(map(lambda idx: g.vs[idx]['name'], path_in_idx))
+	path_in_idx = graph.get_shortest_paths(start, SOLVED)[0]
+	path_in_states = list(map(lambda idx: graph.vs[idx]['name'], path_in_idx))
 	path_in_moves = half_turn_metric(convert_states_path_to_moves(path_in_states))
 	print('Rotate to', start)
 	print(' -> '.join(path_in_moves))
-	return { 'status': 'Good', 'rotate_to': start, 'solution': path_in_moves}
+	return { 
+		'status': 200, 
+		'rotate_to': start, 
+		'solution': path_in_moves
+	}
 
 # generate_solution()
 
