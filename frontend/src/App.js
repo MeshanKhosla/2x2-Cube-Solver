@@ -18,10 +18,9 @@ export const App = () => {
 
 	return (
 		<div>
-			{isGraphLoaded ? (
-				<EnterScramble />
-			) : 
-				<p>Loading Graph...</p>
+			<EnterScramble isGraphLoaded={isGraphLoaded} />
+			{!isGraphLoaded && 
+				<p>Graph loading...</p>
 			}
 		</div>
 	)

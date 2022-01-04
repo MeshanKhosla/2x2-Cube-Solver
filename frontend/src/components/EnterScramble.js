@@ -2,7 +2,7 @@ import { useState } from 'react'
 import ShowSolution from './ShowSolution'
 
 
-export const EnterScramble = () => {
+export const EnterScramble = ({ isGraphLoaded }) => {
 	const [scramble, setScramble] = useState('')
 	const [solutionData, setSolutionData] = useState({})
 	const [isScrambleSubmitted, setIsScrambleSubmitted] = useState(false)
@@ -11,10 +11,8 @@ export const EnterScramble = () => {
 		fetch("/get-solution", { headers: { 'initial_state': initialState }}).then(
 			res => res.json()
 		).then(solData => {
-			if (solData['status'] === 200) {
-				setSolutionData({ rotate_to : solData['rotate_to'], solution : solData['solution'] })
-				console.log(solData)
-			}
+			setSolutionData(solData)
+			console.log(solData)
 		})
 	}
 
@@ -32,7 +30,7 @@ export const EnterScramble = () => {
 					<input onChange={handleScrambleChange} />
 					<br />
 					<br />
-					<button onClick={handleScrambleSubmit}>Get solution</button>
+					<button disabled={!isGraphLoaded} onClick={handleScrambleSubmit}>Get solution</button>
 				</div>
 			:
 				<ShowSolution solutionData={solutionData} />

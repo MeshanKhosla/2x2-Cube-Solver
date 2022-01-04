@@ -1,5 +1,5 @@
 from flask import Flask, request
-from scripts.main import generate_solution, load_graph
+from scripts.main import generate_solution, load_graph 
 
 app = Flask('__name__')
 

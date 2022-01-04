@@ -91,10 +91,7 @@ def generate_solution(graph=None, start=None):
 		'solution': path_in_moves
 	}
 
-# generate_solution()
-
-"""
-Files needed for this to work:
-- graph-igraph.pickle
-- 2x2states.pickle
-"""
+def to_dot():
+	g = load_graph()
+	print('doing')
+	g.write('graph.dot')
