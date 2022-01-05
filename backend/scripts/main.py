@@ -69,6 +69,7 @@ def generate_solution(graph=None, start=None):
 	if not start:
 		start = input('Enter your cube state: ')
 
+	initial_scramble = start
 	start = start.upper()
 	invalid_input = False
 	try:
@@ -88,10 +89,9 @@ def generate_solution(graph=None, start=None):
 	return { 
 		'status': 200, 
 		'rotate_to': start, 
-		'solution': path_in_moves
+		'solution': path_in_moves,
 	}
 
 def to_dot():
 	g = load_graph()
-	print('doing')
 	g.write('graph.dot')

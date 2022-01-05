@@ -48,15 +48,15 @@ export const EnterScramble = ({ isGraphLoaded }) => {
 		<div>
 			{!isScrambleSubmitted ? 
 				<div>
-					<p>Enter scramble</p>
+					<h1>Enter scramble</h1>
 						<div className='cube-wrapper'>
 							<Cube size={300} index="front">
-								<CubeStickerGrid updateScramble={updateScramble} indices={[6, 7, 14, 15]}/>
-								<CubeStickerGrid updateScramble={updateScramble} indices={[8, 9, 16, 17]}/>
-								<CubeStickerGrid updateScramble={updateScramble} indices={[10, 11, 18, 19]}/>
-								<CubeStickerGrid updateScramble={updateScramble} indices={[4, 5, 12, 13]}/>
-								<CubeStickerGrid updateScramble={updateScramble} indices={[0, 1, 2, 3]}/>
-								<CubeStickerGrid updateScramble={updateScramble} indices={[20, 21, 22, 23]}/>
+								<CubeStickerGrid updateScramble={updateScramble} indices={[6, 7, 14, 15]} />
+								<CubeStickerGrid updateScramble={updateScramble} indices={[8, 9, 16, 17]} />
+								<CubeStickerGrid updateScramble={updateScramble} indices={[10, 11, 18, 19]} />
+								<CubeStickerGrid updateScramble={updateScramble} indices={[4, 5, 12, 13]} />
+								<CubeStickerGrid updateScramble={updateScramble} indices={[0, 1, 2, 3]} />
+								<CubeStickerGrid updateScramble={updateScramble} indices={[20, 21, 22, 23]} />
 							</Cube>
 						</div>
 					<button disabled={!isGraphLoaded} onClick={handleScrambleSubmit}>Get solution</button>
