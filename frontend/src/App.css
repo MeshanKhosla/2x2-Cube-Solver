@@ -1,0 +1,87 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --sticker-color-red: rgb(206, 44, 44);
+  --sticker-color-green: rgb(26, 192, 26);
+  --sticker-color-orange: rgb(243, 155, 13);
+  --sticker-color-blue: rgb(9, 29, 209);
+  --sticker-color-yellow: rgb(239, 255, 8);
+  --sticker-color-white: rgb(231, 231, 231);
+  --sticker-color-default: rgb(0, 0, 0);
+}
+
+html{
+  background-color: rgb(80, 80, 80);
+  color: white;
+}
+
+.cube-wrapper {
+	width: 300px;
+	height: 300px;
+	margin: 70px;
+}
+
+.sticker-grid-container {
+	width: 300px;
+	height: 300px;
+	background-color: rgb(255, 255, 255);
+	display: grid;
+	grid-template-columns: 150px 140px;
+	grid-row: auto auto;
+	grid-column-gap: 10px;
+	grid-row-gap: 10px;
+}
+
+.sticker {
+    padding: 20px;
+    border-radius: 10px;
+	transform: scale(0.95);
+}
+
+
+.color-palette-container {
+	position: absolute;
+	display: grid;
+	grid-template-rows: 40px 40px;
+	grid-template-columns: 40px 40px 40px;
+	transform: translate(-7px, 9px)
+}
+
+.palette-color {
+	margin: 2px;
+	border: 1px solid black
+}
+
+.palette-color:hover {
+	cursor: pointer;
+}
+
+.sticker-color-default {
+	background-color: var(--sticker-color-default);
+}
+
+.palette-color-r, .sticker-color-r {
+	background-color: var(--sticker-color-red);
+}
+
+.palette-color-g, .sticker-color-g {
+	background-color: var(--sticker-color-green);
+}
+
+.palette-color-o, .sticker-color-o {
+	background-color: var(--sticker-color-orange);
+}
+
+.palette-color-b, .sticker-color-b {
+	background-color: var(--sticker-color-blue);
+}
+
+.palette-color-y, .sticker-color-y {
+	background-color: var(--sticker-color-yellow);
+}
+
+.palette-color-w, .sticker-color-w {
+	background-color: var(--sticker-color-white);
+}
