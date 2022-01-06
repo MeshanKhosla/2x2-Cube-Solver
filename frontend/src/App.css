@@ -12,9 +12,45 @@
   --sticker-color-default: rgb(0, 0, 0);
 }
 
-html{
-  background-color: rgb(80, 80, 80);
-  color: white;
+
+body {
+	background-color: rgb(133, 0, 0);
+}
+
+.enter-scramble-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.enter-scramble-wrapper h1 {
+	color: white;
+	margin-top: 15px;
+}
+
+.cube-solution-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.cube-solution-wrapper h1, .cube-solution-wrapper h2 {
+	color: white;
+}
+
+Button {
+	width: 125px;
+	height: 50px;
+}
+
+.reset-cube-btn {
+	transform: translateX(-55%);
+}
+
+.get-solution-btn {
+	transform: translate(55%, -100%);
 }
 
 .cube-btn-wrapper {

@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import CubeStickerGridStatic from './CubeStickerGridStatic';
 import ResettingCube from './ResettingCube';
+import EnterScramble from './EnterScramble';
 import '../App.css';
 
 const CubeSolution = ({ solutionData }) => {
-	/* Used to reset the cube when reset button is pressed */
-	const [resetCube, setResetCube] = useState(0)
+	const [showInvalidText, setShowInvalidText] = useState(true)
 
 	return (
-		<div>
+		<div className="cube-solution-wrapper">
 			{solutionData['status'] === 200 ?
 				<div>
 					<h1>Solution</h1>
@@ -24,7 +24,10 @@ const CubeSolution = ({ solutionData }) => {
 					<h2>{solutionData['solution'].join(' ')}</h2>
 				</div>
 				:
-				<h1>{solutionData.status}</h1>
+				<div>
+					{showInvalidText && <h1>Invalid cube state. Please try again</h1> }
+					<EnterScramble onSubmit={() => setShowInvalidText(false)} isGraphLoaded={true} />
+				</div>
 			}
 		</div>
 	)
