@@ -7,9 +7,7 @@ export const ShowSolution = ({ solutionData }) => {
 			{!Object.keys(solutionData).length ? 
 				<p>Generating solution...</p>
 			:
-				<div>
-					<CubeSolution solutionData={solutionData} />
-				</div>
+				<CubeSolution solutionData={solutionData} />
 			}	
 		</div>
 	)

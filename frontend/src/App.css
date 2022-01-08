@@ -53,12 +53,26 @@ Button {
 	transform: translate(55%, -100%);
 }
 
+.try-another-btn-wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.try-another-btn {
+	transform: translate(60%, -100%);
+}
+
 .cube-btn-wrapper {
 	display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
+
+.invalid-text {
+	text-align: center;
+}
+
 .cube-container {
 	margin: 100px;
 }
