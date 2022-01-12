@@ -14,7 +14,7 @@
 
 
 body {
-	background-color: rgb(133, 0, 0);
+	background-color: rgb(115, 149, 182);
 }
 
 .enter-scramble-wrapper {
@@ -30,10 +30,27 @@ body {
 }
 
 .cube-solution-wrapper {
-	display: flex;
+	/* display: flex;
 	justify-content: center;
 	align-items: center;
-	flex-direction: column;
+	flex-direction: column; */
+}
+
+.slick-dots {
+	transform: translateY(-80px);
+}
+
+.solution-carousel-slide {
+	background-color: rgba(0, 0, 0, 0.420);
+	width: 80% !important;
+	margin-left: 10% !important;
+	padding: 20px;
+}
+
+
+.solution-carousel-slide h2 {
+	text-align: center;
+	color: white;
 }
 
 .cube-solution-wrapper h1, .cube-solution-wrapper h2 {
@@ -59,7 +76,7 @@ Button {
 }
 
 .try-another-btn {
-	transform: translate(60%, -100%);
+	transform: translate(60%, -165%);
 }
 
 .cube-btn-wrapper {
@@ -99,6 +116,18 @@ Button {
 	transform: scale(0.95);
 }
 
+.generating-sol-container {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.generating-sol-container p {
+	color: white;
+	font-size: 2rem;
+}
 
 .color-palette-container {
 	position: absolute;

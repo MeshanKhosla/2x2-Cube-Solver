@@ -5,7 +5,9 @@ export const ShowSolution = ({ solutionData }) => {
 	return (
 		<div>
 			{!Object.keys(solutionData).length ? 
-				<p>Generating solution...</p>
+				<div className="generating-sol-container">
+					<p>Generating solution...</p>
+				</div>
 			:
 				<CubeSolution solutionData={solutionData} />
 			}	
