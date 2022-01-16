@@ -54,6 +54,23 @@ def half_turn_metric(path_in_moves):
 		half_turn_result.append(new_move)
 	return half_turn_result
 
+# TODO fails on R2 F2 R2
+def states_to_half_turn(states, moves):
+	"""
+	Takes in states and moves (in half turn metric) and converts the states to half turns.
+	"""
+	states_in_half_turns = [states.pop(0)]
+	states_counter = 0
+	for move in moves:
+		is_double_move = len(move) == 2 and move[1] == '2'
+		if is_double_move:
+			states_in_half_turns.append(states[states_counter + 1])
+			states_counter += 2
+		else:
+			states_in_half_turns.append(states[states_counter])
+			states_counter += 1
+	return states_in_half_turns
+
 def load_graph():
 	print('\nLoading graph...')
 	g = Graph.Read_Pickle('scripts/graph-data/graph-igraph.pickle')
@@ -84,12 +101,15 @@ def generate_solution(graph=None, start=None):
 	path_in_idx = graph.get_shortest_paths(start, SOLVED)[0]
 	path_in_states = list(map(lambda idx: graph.vs[idx]['name'], path_in_idx))
 	path_in_moves = half_turn_metric(convert_states_path_to_moves(path_in_states))
+	path_in_states = states_to_half_turn(path_in_states, path_in_moves)
 	print('Rotate to', start)
 	print(' -> '.join(path_in_moves))
+	print(path_in_states)
 	return { 
 		'status': 200, 
 		'rotate_to': start, 
 		'solution': path_in_moves,
+		'solution-states': path_in_states,
 	}
 
 def to_dot():
