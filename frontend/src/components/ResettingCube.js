@@ -26,7 +26,7 @@ const ResettingCube = ({ children, resetScramble=()=>{} }) => {
 						</Cube>
 					</div>
 				</div>
-				<Button className="reset-cube-btn" onClick={handleModalOpen}>Reset Cube</Button>
+				<Button className="reset-cube-btn" onClick={handleModalOpen}>Orient Cube</Button>
 			</div>
 			<Modal title="Reset cube" visible={isModalVisible} okText="Yes" onOk={resetCube} onCancel={handleModalClose}>
 				<h3>Are you sure you want to reset the cube?</h3>

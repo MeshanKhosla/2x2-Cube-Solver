@@ -6,7 +6,7 @@ const SolutionCarousel = ({ solutionData }) => {
 	return (
 		<Carousel>
 			<div className="solution-carousel-slide">
-				<h2>Rotate so the cube is oriented like this</h2>
+				<h2>Rotate so the cube is oriented like this (front face)</h2>
 				<ResettingCube>
 					<CubeStickerGridStatic rotateTo={solutionData['rotate_to']} indices={[6, 7, 14, 15]} />
 					<CubeStickerGridStatic rotateTo={solutionData['rotate_to']} indices={[8, 9, 16, 17]} />

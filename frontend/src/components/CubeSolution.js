@@ -23,7 +23,7 @@ const CubeSolution = ({ solutionData }) => {
 		<div className="cube-solution-wrapper">
 			{solutionData['status'] === 200 ?
 				<div>
-					<h1>Solution</h1>
+					<h1 style={{ textAlign: 'center' }}>Solution found. Click through the slides for moves to make</h1>
 					<SolutionCarousel solutionData={solutionData}/>
 					<div className="try-another-btn-wrapper">
 						<Button className="try-another-btn" type="primary" onClick={handleModalOpen}>Try another</Button>

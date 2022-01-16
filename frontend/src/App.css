@@ -29,13 +29,6 @@ body {
 	margin-top: 15px;
 }
 
-.cube-solution-wrapper {
-	/* display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column; */
-}
-
 .slick-dots {
 	transform: translateY(-80px);
 }
@@ -48,7 +41,7 @@ body {
 }
 
 
-.solution-carousel-slide h2 {
+.solution-carousel-slide h2, .solution-carousel-slide h1 {
 	text-align: center;
 	color: white;
 }
