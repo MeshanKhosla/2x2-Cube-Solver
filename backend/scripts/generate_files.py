@@ -1,4 +1,4 @@
-from scripts.constants import *
+from backend.scripts.constants import *
 from igraph import *
 import json 
 import pickle
@@ -27,7 +27,7 @@ def rotate_cube_to_match(state):
 	Y = U + D' (Entire cube on U)
 	Z = F + B' (Entire cube on F)
 	"""
-	with open('scripts/graph-data/2x2states.pickle', 'rb') as f:
+	with open('backend/scripts/graph-data/2x2states.pickle', 'rb') as f:
 		states = pickle.load(f)
 	def check_horizontal(state):
 		for _ in range(4):

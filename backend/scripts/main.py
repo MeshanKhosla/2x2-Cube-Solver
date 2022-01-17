@@ -1,6 +1,6 @@
 from igraph import *
-from scripts.constants import all_moves, abrv_to_move
-from scripts.generate_files import rotate_cube_to_match, apply_move
+from backend.scripts.constants import all_moves, abrv_to_move
+from backend.scripts.generate_files import rotate_cube_to_match, apply_move
 from compress_pickle import load
 
 def get_abrv_from_move(starting_move):
@@ -73,7 +73,7 @@ def states_to_half_turn(states, moves):
 
 def load_graph():
 	print('\nLoading graph...')
-	g = load('scripts/graph-data/compressed-igraph-lzma', compression='lzma', set_default_extension=False)
+	g = load('backend/scripts/graph-data/compressed-igraph-lzma', compression='lzma', set_default_extension=False)
 	# g = Graph.Read_Pickle('scripts/graph-data/graph-igraph.pickle')
 	print('Graph loaded\n')
 	return g
