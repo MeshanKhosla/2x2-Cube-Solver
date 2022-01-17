@@ -73,8 +73,8 @@ def states_to_half_turn(states, moves):
 
 def load_graph():
 	print('\nLoading graph...')
-	g = load('backend/scripts/graph-data/compressed-igraph-lzma', compression='lzma', set_default_extension=False)
-	# g = Graph.Read_Pickle('scripts/graph-data/graph-igraph.pickle')
+	# g = load('backend/scripts/graph-data/compressed-igraph-lzma', compression='lzma', set_default_extension=False)
+	# g = Graph.Read_Pickle('backend/scripts/graph-data/graph-igraph.pickle')
 	print('Graph loaded\n')
 	return g
 
