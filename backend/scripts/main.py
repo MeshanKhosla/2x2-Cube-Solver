@@ -76,6 +76,7 @@ def load_graph():
 	# g = load('backend/scripts/graph-data/compressed-igraph-lzma', compression='lzma', set_default_extension=False)
 	# g = Graph.Read_Pickle('backend/scripts/graph-data/graph-igraph.pickle')
 	print('Graph loaded\n')
+	g = 'a'
 	return g
 
 def generate_solution(graph=None, start=None):
