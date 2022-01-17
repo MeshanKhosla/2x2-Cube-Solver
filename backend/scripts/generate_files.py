@@ -2,6 +2,7 @@ from scripts.constants import *
 from igraph import *
 import json 
 import pickle
+from compress_pickle import dump
 
 def apply_move(initial_state, move):
     """
@@ -98,12 +99,13 @@ def save_graph_to_file():
 	with open('graph-data/graph.json', 'w') as f:
 		json.dump(graph, f)
 
+
 def save_states_to_file():
 	"""
 	Serializes a set of all possible 2x2 combinations into 2x2states.pickle
 	"""
 	states = set()
-	with open('graph-data/2x2states.txt') as f:
+	with open('scripts/graph-data/2x2states.txt') as f:
 		i = 0
 		for state in f:
 			state = state.rstrip('\n')
@@ -111,9 +113,7 @@ def save_states_to_file():
 			print(i)
 			i += 1
 
-	
-	with open('graph-data/2x2states.pickle', 'wb') as f:
-		pickle.dump(states, f, protocol=pickle.HIGHEST_PROTOCOL)
+	dump(states, 'scripts/graph-data/compressed-2x2states.pickle', compression="gzip")
 
 k = 0
 def save_pickled_igraph():
@@ -152,4 +152,9 @@ def save_pickled_igraph():
 	g.add_edges(all_edges)
 	print('DONE ADDING EDGES')
 	g.write_pickle('graph-data/graph-igraph.pickle')
+
+def compress_and_save_igraph():
+	g = Graph.Read_Pickle('scripts/graph-data/graph-igraph.pickle')
+	print('read')
+	dump(g, 'scripts/graph-data/compressed-igraph-lzma', compression="lzma", set_default_extension=False)
 	
