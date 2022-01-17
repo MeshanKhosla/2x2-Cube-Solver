@@ -1,6 +1,7 @@
 from igraph import *
 from scripts.constants import all_moves, abrv_to_move
 from scripts.generate_files import rotate_cube_to_match, apply_move
+from compress_pickle import load
 
 def get_abrv_from_move(starting_move):
 	"""
@@ -54,7 +55,6 @@ def half_turn_metric(path_in_moves):
 		half_turn_result.append(new_move)
 	return half_turn_result
 
-# TODO fails on R2 F2 R2
 def states_to_half_turn(states, moves):
 	"""
 	Takes in states and moves (in half turn metric) and converts the states to half turns.
@@ -73,7 +73,8 @@ def states_to_half_turn(states, moves):
 
 def load_graph():
 	print('\nLoading graph...')
-	g = Graph.Read_Pickle('scripts/graph-data/graph-igraph.pickle')
+	g = load('scripts/graph-data/compressed-igraph-lzma', compression='lzma', set_default_extension=False)
+	# g = Graph.Read_Pickle('scripts/graph-data/graph-igraph.pickle')
 	print('Graph loaded\n')
 	return g
 
@@ -86,7 +87,6 @@ def generate_solution(graph=None, start=None):
 	if not start:
 		start = input('Enter your cube state: ')
 
-	initial_scramble = start
 	start = start.upper()
 	invalid_input = False
 	try:
