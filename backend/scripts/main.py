@@ -87,7 +87,7 @@ def load_graph():
 	# g = load('backend/scripts/graph-data/graph-removed-edges.pickle.gz', compression='gzip', set_default_extension=False)
 	# g = Graph.Read_Pickle('backend/scripts/graph-data/graph-removed-edges.pickle')
 	print('Graph loaded\n')
-	return g
+	# return g
 
 def generate_solution(graph=None, start=None):
 	if not graph:
