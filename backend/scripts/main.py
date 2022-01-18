@@ -2,6 +2,7 @@ from igraph import *
 from backend.scripts.constants import all_moves, abrv_to_move
 from backend.scripts.generate_files import rotate_cube_to_match, apply_move
 from compress_pickle import load
+from compress_pickle import load
 
 def get_abrv_from_move(starting_move):
 	"""
@@ -75,8 +76,17 @@ def load_graph():
 	print('\nLoading graph...')
 	# g = load('backend/scripts/graph-data/compressed-igraph-lzma', compression='lzma', set_default_extension=False)
 	# g = Graph.Read_Pickle('backend/scripts/graph-data/graph-igraph.pickle')
+	# with open('backend/scripts/graph-data/blosc', 'rb') as f:
+		# pickled_graph = blosc2.decompress(f.read())
+	# print('unpickling')
+	# g = pickle.loads(pickled_graph)
+
+	# with open('backend/scripts/graph-data/graph-removed-edges.pickle', 'rb') as f:
+		# g = pickle.load(f)
+
+	g = load('backend/scripts/graph-data/graph-removed-edges.pickle.gz', compression='gzip', set_default_extension=False)
+	# g = Graph.Read_Pickle('backend/scripts/graph-data/graph-removed-edges.pickle')
 	print('Graph loaded\n')
-	g = 'a'
 	return g
 
 def generate_solution(graph=None, start=None):
