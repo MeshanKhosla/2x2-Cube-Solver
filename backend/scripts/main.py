@@ -84,7 +84,7 @@ def load_graph():
 	# with open('backend/scripts/graph-data/graph-removed-edges.pickle', 'rb') as f:
 		# g = pickle.load(f)
 
-	g = load('backend/scripts/graph-data/graph-removed-edges.pickle.gz', compression='gzip', set_default_extension=False)
+	# g = load('backend/scripts/graph-data/graph-removed-edges.pickle.gz', compression='gzip', set_default_extension=False)
 	# g = Graph.Read_Pickle('backend/scripts/graph-data/graph-removed-edges.pickle')
 	print('Graph loaded\n')
 	return g
