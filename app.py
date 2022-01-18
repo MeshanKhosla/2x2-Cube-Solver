@@ -12,7 +12,7 @@ CORS(app)
 @cross_origin()
 def setup_graph():
 	global graph
-	# graph = load_graph()
+	graph = load_graph()
 	return { 'status' : 200 }
 
 @app.route("/get-solution")
