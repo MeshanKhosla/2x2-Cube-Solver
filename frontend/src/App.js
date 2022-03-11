@@ -5,32 +5,18 @@ export const App = () => {
 	const [isGraphLoaded, setIsGraphLoaded] = useState(false)
 
 	/* Load the 2x2 cube graph when the app is loaded */
-	// useEffect(() => {
-	// 	fetch('/setup-graph').then(
-	// 		res => res.json()
-	// 	).then(graphData => {
-	// 		console.log(graphData)
-	// 		if (graphData['status'] === 200) {
-	// 			setIsGraphLoaded(true);
-	// 		}
-	// 	})
-	// }, [])
-
-
-	const loadGraph = () => {
-		fetch('/setup-graph').then(
-			res => res.json()
-		).then(graphData => {
-			console.log(graphData)
-			if (graphData['status'] === 200) {
-				setIsGraphLoaded(true);
+	useEffect(() => {
+		const makeGraph = async () => {
+			let response = await fetch('/setup-graph');
+			if (response.status === 200) {
+				setIsGraphLoaded(true)
 			}
-		})
+		}
+		makeGraph();
+	}, [])
 
-	}
 	return (
 		<div>
-			<button onClick={loadGraph}>Load</button>
 			<EnterScramble isGraphLoaded={isGraphLoaded} />
 		</div>
 	)
